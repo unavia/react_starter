@@ -1,0 +1,9 @@
+# NPM packages
+node_modules/
+
+# Build files
+public/*.js
+public/*.css
+
+# Mac
+.DS_STORE
