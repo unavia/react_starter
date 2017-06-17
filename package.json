@@ -1,0 +1,25 @@
+{
+  "name": "react_starter",
+  "version": "0.1.0",
+  "description": "Starter template for React/Redux projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unavia/react_starter.git"
+  },
+  "keywords": [
+    "template",
+    "react",
+    "redux",
+    "spa"
+  ],
+  "author": "Kendall Roth <kroth@unavia.ca> (https://unavia.ca/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/unavia/react_starter/issues"
+  },
+  "homepage": "https://github.com/unavia/react_starter#readme"
+}
