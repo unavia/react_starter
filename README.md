@@ -1,2 +1,2 @@
-# react_starter
+# React Starter
 React starter template
