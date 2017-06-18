@@ -1,21 +1,38 @@
 const path = require('path');
 
 // Path constants
-const Paths = {
+const AppPaths = {
   app: path.join(__dirname, '../app'),
   src: path.join(__dirname, '../app', 'src'),
-  public: path.join(__dirname, '../app', 'public'),
+  build: path.join(__dirname, '../app', 'public'),
 };
 
-// Resolve section of webpak config
-const Resolve = {
+const ServerPaths = {
+  server: path.join(__dirname, '../server'),
+  src: path.join(__dirname, '../server/src'),
+  build: path.join(__dirname, '../server/build'),
+};
+
+// Resolve section of app webpack config
+const AppResolve = {
   // Try resolving files with the following extensions (ie. App.js, App.jsx, App.json)
   extensions: [ '.js', '.jsx', '.json' ],
   // Use aliases to remove relative paths in component import statements
   alias: {
-    '@components': path.join(Paths.src, 'components'),
-    '@common': path.join(Paths.src, 'common'),
-    '@styled': path.join(Paths.src, 'styled'),
+    '@components': path.join(AppPaths.src, 'components'),
+    '@common': path.join(AppPaths.src, 'common'),
+    '@styled': path.join(AppPaths.src, 'styled'),
+  },
+};
+
+// Resolve section of server webpack config
+const ServerResolve = {
+  // Try resolving files with the following extensions (ie. server.js, routes.json)
+  extensions: [ '.js', '.json' ],
+  // Use aliases to remove relative paths in component import statements
+  alias: {
+    '@api': path.join(ServerPaths.server, 'api'),
+    '@server': path.join(ServerPaths.server),
   },
 };
 
@@ -51,7 +68,9 @@ const Rules = [
 ];
 
 module.exports = {
-  Paths,
-  Resolve,
+  AppPaths,
+  ServerPaths,
+  AppResolve,
+  ServerResolve,
   Rules,
 };
