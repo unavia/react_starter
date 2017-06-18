@@ -4,6 +4,8 @@ node_modules/
 # Build files
 public/*.js
 public/*.css
+public/*.ttf
+server/*.js
 
 # Mac
 .DS_STORE

@@ -6,8 +6,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const Webpack = require('../webpack');
 
-const Paths = Webpack.Paths;
-const Resolve = Webpack.Resolve;
+const Paths = Webpack.AppPaths;
+const Resolve = Webpack.AppResolve;
 const Rules = Webpack.Rules;
 
 // Production specific rules
@@ -29,7 +29,7 @@ module.exports = {
     vendor: [ 'react', 'react-dom' ],
   },
   output: {
-    path: Paths.public,
+    path: Paths.build,
     filename: '[name].[hash].js',
     publicPath: '/',
   },

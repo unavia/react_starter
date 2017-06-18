@@ -4,19 +4,32 @@
   "description": "Starter template for React/Redux projects",
   "main": "index.js",
   "scripts": {
-    "app:build": "better-npm-run app:build",
     "app:clean": "better-npm-run app:clean",
-    "app:start": "better-npm-run app:start"
+    "app:dev": "better-npm-run app:dev",
+    "app:prod": "better-npm-run app:prod",
+    "server:dev": "better-npm-run server:dev",
+    "server:clean": "better-npm-run server:clean",
+    "server:prod": "better-npm-run server:prod",
+    "server:start": "better-npm-run server:start"
   },
   "betterScripts": {
-    "app:build": {
+    "app:clean": "del 'app/public/*' '!app/public/assets'",
+    "app:dev": "webpack-dev-server --config webpack/development/webpack.app.config.babel.js --progress --colors --port=8000",
+    "app:prod": {
       "command": "webpack -p --config webpack/production/webpack.app.config.babel.js --progress --colors",
       "env": {
         "NODE_ENV": "production"
       }
     },
-    "app:clean": "del 'app/public/*' '!app/public/assets'",
-    "app:start": "webpack-dev-server --config webpack/development/webpack.app.config.babel.js --progress --colors --port=8000"
+    "server:dev": "concurrently \"webpack --config webpack/development/webpack.server.config.babel.js --progress --colors\" \"nodemon server/build/server.js\"",
+    "server:clean": "del 'server/build'",
+    "server:prod": {
+      "command": "webpack -p --config webpack/production/webpack.server.config.babel.js --progress --colors",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "server:start": "node server/build/server.js"
   },
   "repository": {
     "type": "git",
@@ -44,6 +57,7 @@
     "babel-preset-react": "6.24.1",
     "babel-register": "6.24.1",
     "compression-webpack-plugin": "0.4.0",
+    "concurrently": "3.4.0",
     "css-loader": "0.28.4",
     "del-cli": "1.0.0",
     "eslint": "3.19.0",
@@ -55,6 +69,7 @@
     "extract-text-webpack-plugin": "2.1.2",
     "file-loader": "0.11.2",
     "node-sass": "4.5.3",
+    "nodemon": "1.11.0",
     "react-dom": "15.6.1",
     "rimraf": "2.6.1",
     "sass-loader": "6.0.6",
@@ -66,6 +81,9 @@
   },
   "dependencies": {
     "better-npm-run": "0.0.15",
+    "body-parser": "1.17.2",
+    "ejs": "2.5.6",
+    "express": "4.15.3",
     "html-webpack-plugin": "2.28.0",
     "path": "0.12.7",
     "react": "15.6.1",

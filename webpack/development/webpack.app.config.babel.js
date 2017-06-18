@@ -4,8 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const Webpack = require('../webpack');
 
-const Paths = Webpack.Paths;
-const Resolve = Webpack.Resolve;
+const Paths = Webpack.AppPaths;
+const Resolve = Webpack.AppResolve;
 const Rules = Webpack.Rules;
 
 // Development specific rules
@@ -38,13 +38,13 @@ module.exports = {
     path.join(Paths.src, 'index.js'),
   ],
   output: {
-    path: Paths.public,
+    path: Paths.build,
     filename: 'bundle.js',
     publicPath: '/',
   },
   // Development server configuration
   devServer: {
-    contentBase: Paths.public,
+    contentBase: Paths.build,
     historyApiFallback: true,
     hot: true,
     inline: true,
