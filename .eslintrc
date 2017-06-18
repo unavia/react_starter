@@ -1,0 +1,20 @@
+{
+  'extends': [ 'airbnb' ],
+  'env': {
+    'browser': true,
+  },
+  'globals': {},
+  'parser': 'babel-eslint',
+  'rules': {
+    'array-bracket-spacing': [ 'warn', 'always' ],
+    'comma-dangle': [ 'warn', 'always-multiline' ],
+    'jsx-quotes': [ 'warn', 'prefer-double' ],
+    'no-unused-vars': 'warn',
+    'quotes': [ 'warn', 'single' ],
+    'semi': [ 'warn', 'always' ],
+    'space-before-function-paren': 'off',
+    'import/no-extraneous-dependencies': 'off',
+    'import/no-unresolved': 'off',
+    'import/extensions': 'off',
+  },
+}

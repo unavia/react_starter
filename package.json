@@ -4,7 +4,19 @@
   "description": "Starter template for React/Redux projects",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "app:build": "better-npm-run app:build",
+    "app:clean": "better-npm-run app:clean",
+    "app:start": "better-npm-run app:start"
+  },
+  "betterScripts": {
+    "app:build": {
+      "command": "webpack -p --config webpack/production/webpack.app.config.babel.js --progress --colors",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "app:clean": "del 'app/public/*' '!app/public/assets'",
+    "app:start": "webpack-dev-server --config webpack/development/webpack.app.config.babel.js --progress --colors --port=8000"
   },
   "repository": {
     "type": "git",
@@ -21,5 +33,42 @@
   "bugs": {
     "url": "https://github.com/unavia/react_starter/issues"
   },
-  "homepage": "https://github.com/unavia/react_starter#readme"
+  "homepage": "https://github.com/unavia/react_starter#readme",
+  "devDependencies": {
+    "babel-cli": "6.24.1",
+    "babel-core": "6.25.0",
+    "babel-eslint": "7.2.3",
+    "babel-loader": "7.0.0",
+    "babel-plugin-styled-components": "1.1.4",
+    "babel-preset-env": "1.5.2",
+    "babel-preset-react": "6.24.1",
+    "babel-register": "6.24.1",
+    "compression-webpack-plugin": "0.4.0",
+    "css-loader": "0.28.4",
+    "del-cli": "1.0.0",
+    "eslint": "3.19.0",
+    "eslint-config-airbnb": "15.0.1",
+    "eslint-loader": "1.8.0",
+    "eslint-plugin-import": "2.3.0",
+    "eslint-plugin-jsx-a11y": "5.0.3",
+    "eslint-plugin-react": "7.1.0",
+    "extract-text-webpack-plugin": "2.1.2",
+    "file-loader": "0.11.2",
+    "node-sass": "4.5.3",
+    "react-dom": "15.6.1",
+    "rimraf": "2.6.1",
+    "sass-loader": "6.0.6",
+    "style-loader": "0.18.2",
+    "styled-components": "2.1.0",
+    "url-loader": "0.5.9",
+    "webpack": "2.6.1",
+    "webpack-dev-server": "2.4.5"
+  },
+  "dependencies": {
+    "better-npm-run": "0.0.15",
+    "html-webpack-plugin": "2.28.0",
+    "path": "0.12.7",
+    "react": "15.6.1",
+    "react-hot-loader": "3.0.0-beta.7"
+  }
 }
