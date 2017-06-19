@@ -27,6 +27,20 @@ const DevRules = [
     ],
     exclude: /node_modules/,
   },
+  // Images (use url-loader to 50 MB)
+  {
+    test: /\.(png|jpg|svg)$/,
+    use: [
+      {
+        loader: 'url-loader',
+        options: {
+          limit: 51200,
+          name: '[name].[hash].[ext]',
+          outputPath: 'images/',
+        },
+      },
+    ],
+  },
 ];
 
 module.exports = {
@@ -40,6 +54,8 @@ module.exports = {
   output: {
     path: Paths.build,
     filename: 'bundle.js',
+    // Public URL of output directory when referenced in a browser (should end in `/`)
+    //  Relative URLs are resolved relative to 'index.html'
     publicPath: '/',
   },
   // Development server configuration

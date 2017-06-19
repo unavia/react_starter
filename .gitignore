@@ -3,7 +3,6 @@ node_modules/
 
 # Build files
 app/public/*
-!app/public/assets
 server/build/*
 
 # Mac

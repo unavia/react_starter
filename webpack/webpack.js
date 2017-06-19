@@ -5,6 +5,7 @@ const AppPaths = {
   app: path.join(__dirname, '../app'),
   src: path.join(__dirname, '../app', 'src'),
   build: path.join(__dirname, '../app', 'public'),
+  assets: path.join(__dirname, '../app', 'src', 'assets'),
 };
 
 const ServerPaths = {
@@ -22,6 +23,7 @@ const AppResolve = {
     '@components': path.join(AppPaths.src, 'components'),
     '@common': path.join(AppPaths.src, 'common'),
     '@styled': path.join(AppPaths.src, 'styled'),
+    '@assets': path.join(AppPaths.src, 'assets'),
   },
 };
 
@@ -48,20 +50,31 @@ const Rules = [
     use: 'eslint-loader',
     exclude: /node_modules/,
   },
+  // WOFF fonts (use url-loader to 10000 bytes)
   {
     test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-    use: 'url-loader?limit=10000&mimetype=application/font-woff',
-  },
-  {
-    test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-    use: 'file-loader',
-  },
-  {
-    test: /\.svg/,
     use: [
       {
         loader: 'url-loader',
-        options: { limit: 8000 },
+        options: {
+          limit: 10000,
+          name: '[name].[hash].[ext]',
+          outputPath: 'fonts/',
+          mimetype: 'application/font-woff',
+        },
+      },
+    ],
+  },
+  // TTF and EOT fonts (use file-loader automatically)
+  {
+    test: /\.(ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+    use: [
+      {
+        loader: 'file-loader',
+        options: {
+          name: '[name].[hash].[ext]',
+          outputPath: 'fonts/',
+        },
       },
     ],
   },

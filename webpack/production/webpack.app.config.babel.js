@@ -20,6 +20,35 @@ const ProdRules = [
     }),
     exclude: /node_modules/,
   },
+  // Images (use url-loader to 8 MB) and compress/minimize
+  {
+    test: /\.(png|jpg|svg)$/,
+    use: [
+      {
+        loader: 'url-loader',
+        options: {
+          limit: 8192,
+          name: '[name].[hash].[ext]',
+          outputPath: 'images/',
+        },
+      },
+      {
+        loader: 'image-webpack-loader',
+        options: {
+          progressive: true,
+          optimizationLevel: 7,
+          interlaced: false,
+          mozjpeg: {
+            quality: 65,
+          },
+          pngquant: {
+            quality: '65-90',
+            speed: 4,
+          },
+        },
+      },
+    ],
+  },
 ];
 
 module.exports = {
@@ -31,10 +60,13 @@ module.exports = {
   output: {
     path: Paths.build,
     filename: '[name].[hash].js',
+    // Public URL of output directory when referenced in a browser (should end in `/`)
+    //  Relative URLs are resolved relative to 'index.html'
     publicPath: '/',
   },
   resolve: Resolve,
   plugins: [
+    // Extract style into a separate stylesheet
     new ExtractTextPlugin('styles_[name].css'),
     // Generate an HTML file from a template and include all necessary scripts, etc
     new HtmlWebpackPlugin({
