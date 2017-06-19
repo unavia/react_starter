@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -38,14 +37,13 @@ module.exports = {
   },
   resolve: Resolve,
   plugins: [
+    // Extract style into a separate stylesheet
     new ExtractTextPlugin('styles_[name].css'),
     // Generate an HTML file from a template and include all necessary scripts, etc
     new HtmlWebpackPlugin({
       title: 'React Starter Template',
       template: './app/src/index_template.html',
     }),
-    // Copy assets folder to public directory
-    new CopyWebpackPlugin([ { from: Paths.assets, to: 'assets' } ]),
     // Extract common code and place in a new file
     new webpack.optimize.CommonsChunkPlugin('common'),
     // Minify/uglify JS

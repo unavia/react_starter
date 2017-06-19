@@ -13,7 +13,6 @@
     "server:start": "better-npm-run server:start"
   },
   "betterScripts": {
-    "app:clean": "del 'app/public/*' '!app/public/assets'",
     "app:clean": "del 'app/public/*'",
     "app:dev": "webpack-dev-server --config webpack/development/webpack.app.config.babel.js --progress --colors --port=8000",
     "app:prod": {
@@ -54,12 +53,12 @@
     "babel-eslint": "7.2.3",
     "babel-loader": "7.0.0",
     "babel-plugin-styled-components": "1.1.4",
+    "babel-plugin-transform-react-jsx-img-import": "0.1.4",
     "babel-preset-env": "1.5.2",
     "babel-preset-react": "6.24.1",
     "babel-register": "6.24.1",
     "compression-webpack-plugin": "0.4.0",
     "concurrently": "3.4.0",
-    "copy-webpack-plugin": "4.0.1",
     "css-loader": "0.28.4",
     "del-cli": "1.0.0",
     "eslint": "3.19.0",
