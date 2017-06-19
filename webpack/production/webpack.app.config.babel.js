@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -31,6 +32,8 @@ module.exports = {
   output: {
     path: Paths.build,
     filename: '[name].[hash].js',
+    // Public URL of output directory when referenced in a browser (should end in `/`)
+    //  Relative URLs are resolved relative to 'index.html'
     publicPath: '/',
   },
   resolve: Resolve,
@@ -41,6 +44,8 @@ module.exports = {
       title: 'React Starter Template',
       template: './app/src/index_template.html',
     }),
+    // Copy assets folder to public directory
+    new CopyWebpackPlugin([ { from: Paths.assets, to: 'assets' } ]),
     // Extract common code and place in a new file
     new webpack.optimize.CommonsChunkPlugin('common'),
     // Minify/uglify JS

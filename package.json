@@ -14,6 +14,7 @@
   },
   "betterScripts": {
     "app:clean": "del 'app/public/*' '!app/public/assets'",
+    "app:clean": "del 'app/public/*'",
     "app:dev": "webpack-dev-server --config webpack/development/webpack.app.config.babel.js --progress --colors --port=8000",
     "app:prod": {
       "command": "webpack -p --config webpack/production/webpack.app.config.babel.js --progress --colors",
@@ -58,6 +59,7 @@
     "babel-register": "6.24.1",
     "compression-webpack-plugin": "0.4.0",
     "concurrently": "3.4.0",
+    "copy-webpack-plugin": "4.0.1",
     "css-loader": "0.28.4",
     "del-cli": "1.0.0",
     "eslint": "3.19.0",

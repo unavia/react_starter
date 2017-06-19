@@ -5,6 +5,7 @@ const AppPaths = {
   app: path.join(__dirname, '../app'),
   src: path.join(__dirname, '../app', 'src'),
   build: path.join(__dirname, '../app', 'public'),
+  assets: path.join(__dirname, '../app', 'src', 'assets'),
 };
 
 const ServerPaths = {
@@ -22,6 +23,7 @@ const AppResolve = {
     '@components': path.join(AppPaths.src, 'components'),
     '@common': path.join(AppPaths.src, 'common'),
     '@styled': path.join(AppPaths.src, 'styled'),
+    '@assets': path.join(AppPaths.src, 'assets'),
   },
 };
 
@@ -57,13 +59,8 @@ const Rules = [
     use: 'file-loader',
   },
   {
-    test: /\.svg/,
-    use: [
-      {
-        loader: 'url-loader',
-        options: { limit: 8000 },
-      },
-    ],
+    test: /\.(png|jpe?g|svg)/,
+    use: 'url-loader?limit=8192',
   },
 ];
 

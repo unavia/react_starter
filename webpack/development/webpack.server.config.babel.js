@@ -14,6 +14,8 @@ module.exports = {
   output: {
     path: Paths.build,
     filename: 'server.js',
+    // Public URL of output directory when referenced in a browser (should end in `/`)
+    //  Relative URLs are resolved relative to 'index.html'
     publicPath: '/',
   },
   resolve: Resolve,

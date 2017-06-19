@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const Webpack = require('../webpack');
 
@@ -40,6 +41,8 @@ module.exports = {
   output: {
     path: Paths.build,
     filename: 'bundle.js',
+    // Public URL of output directory when referenced in a browser (should end in `/`)
+    //  Relative URLs are resolved relative to 'index.html'
     publicPath: '/',
   },
   // Development server configuration
@@ -63,6 +66,8 @@ module.exports = {
       title: 'React Starter Template',
       template: './app/src/index_template.html',
     }),
+    // Copy assets folder to public directory
+    new CopyWebpackPlugin([ { from: Paths.assets, to: 'assets' } ]),
     // Enable hot module reloading
     new webpack.HotModuleReplacementPlugin(),
     // Named modules for HMR (uses file names instead of chunk hashes)
