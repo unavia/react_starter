@@ -2,10 +2,9 @@
 node_modules/
 
 # Build files
-public/*.js
-public/*.css
-public/*.ttf
-server/*.js
+app/public/*
+!app/public/assets
+server/build/*
 
 # Mac
 .DS_STORE
