@@ -27,6 +27,20 @@ const DevRules = [
     ],
     exclude: /node_modules/,
   },
+  // Images (use url-loader to 50 MB)
+  {
+    test: /\.(png|jpg|svg)$/,
+    use: [
+      {
+        loader: 'url-loader',
+        options: {
+          limit: 51200,
+          name: '[name].[hash].[ext]',
+          outputPath: 'images/',
+        },
+      },
+    ],
+  },
 ];
 
 module.exports = {

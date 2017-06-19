@@ -58,6 +58,7 @@ const Rules = [
         loader: 'url-loader',
         options: {
           limit: 10000,
+          name: '[name].[hash].[ext]',
           outputPath: 'fonts/',
           mimetype: 'application/font-woff',
         },
@@ -71,20 +72,8 @@ const Rules = [
       {
         loader: 'file-loader',
         options: {
+          name: '[name].[hash].[ext]',
           outputPath: 'fonts/',
-        },
-      },
-    ],
-  },
-  // Images (use url-loader to 8 MB)
-  {
-    test: /\.(png|jpg|svg)$/,
-    use: [
-      {
-        loader: 'url-loader',
-        options: {
-          limit: 8192,
-          outputPath: 'images/',
         },
       },
     ],

@@ -20,6 +20,35 @@ const ProdRules = [
     }),
     exclude: /node_modules/,
   },
+  // Images (use url-loader to 8 MB) and compress/minimize
+  {
+    test: /\.(png|jpg|svg)$/,
+    use: [
+      {
+        loader: 'url-loader',
+        options: {
+          limit: 8192,
+          name: '[name].[hash].[ext]',
+          outputPath: 'images/',
+        },
+      },
+      {
+        loader: 'image-webpack-loader',
+        options: {
+          progressive: true,
+          optimizationLevel: 7,
+          interlaced: false,
+          mozjpeg: {
+            quality: 65,
+          },
+          pngquant: {
+            quality: '65-90',
+            speed: 4,
+          },
+        },
+      },
+    ],
+  },
 ];
 
 module.exports = {

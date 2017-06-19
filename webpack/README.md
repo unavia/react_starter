@@ -34,7 +34,7 @@ import App from '@common/App';
 There are several loaders in both development and production builds to enhance development.
 
 ### Images
-Images use the url-loader (Base64 embed) until they reach a certain size, after which they are placed in the `images/` build folder (and the import URL updated).
+Images use the url-loader (Base64 embed) until they reach a certain size, after which they are placed in the `images/` build folder (and the import URL updated). The production build includes an extra compression and minimization step to lower bundle size.
 
 **NOTE:** There is a plugin to "enable" webpack imports from within image `src` attributes (_babel-plugin-transform-react-jsx-img-import_) but it currently doesn't support `{ modules: false }` `.babelrc` fix for Hot Module Reloading.
 
