@@ -21,7 +21,7 @@
         "NODE_ENV": "production"
       }
     },
-    "server:dev": "concurrently \"webpack --config webpack/development/webpack.server.config.babel.js --progress --colors\" \"nodemon server/build/server.js\"",
+    "server:dev": "concurrently \"webpack --watch --config webpack/development/webpack.server.config.babel.js --progress --colors\" \"nodemon server/build/server.js\"",
     "server:clean": "del 'server/build'",
     "server:prod": {
       "command": "webpack -p --config webpack/production/webpack.server.config.babel.js --progress --colors",
