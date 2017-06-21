@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import chalk from 'chalk';
 
 // Import Routers
 import appRouter from './routes/app';
@@ -19,10 +20,11 @@ server.use('/', appRouter);
 server.use('/test', testRouter);
 
 server.get('/hello', (req, res) => {
+  console.log(`${chalk.green('/hello')} route accessed`);
   res.send('Hello World!');
 });
 
 // Start the server
 server.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
+  console.log(`\n${chalk.bold(`Server is listening on port ${chalk.yellow(PORT)}`)}\n`);
 });
